@@ -1,0 +1,45 @@
+{% extends 'agent/agent_base.html' %}
+{% load static %}
+{% block content %}
+{% for m in messages %}
+	<script>
+		alert('{{ m }}')
+	</script>
+{% endfor %}
+<div class="container">
+	<h2>Material Details View</h2>
+	<br>
+	{% if d %}
+	<table class="table table-bordered table-hover">
+	   <thead class="bg-dark text-white" style="background:black; color:white;">
+	   	  <tr>
+			 <th>Bauxite</th>
+			 <th>Aluminium oxide</th>
+			 <th>Carbon</th>
+			 <th>Aluminium fluoride</th>
+			 <th>Cryolite</th>
+			 <th>Electrical Energy</th>
+			  <th>Aluminium to be Extracted</th>
+			 <th>For Processing</th>
+		  </tr>
+	   </thead>
+	   <tbody class="bg-info">
+		{% for i in d %}
+		  <tr>
+			 <td>{{ i.bauxite }}</td>
+			 <td>{{ i.aluminiumoxide }}</td>
+			 <td>{{ i.carbon }}</td>
+			 <td>{{ i.aluminiumfluoride }}</td>
+			 <td>{{ i.cryolite }}</td>
+			 <td>{{ i.electricalenergy }}</td>
+			  <td>{{ i.aluminium }}</td>
+			 <td><a href="/to_process/{{ i.id }}/"><input type="button" style="background:black; color:white; width: 75px; height: 30px;" value="Process"></a></td>
+		  </tr>
+	   {% endfor %}
+	   </tbody>
+	</table>
+	{% else %}
+	<h3>No More Details to View</h3>
+	{% endif %}
+</div>
+{% endblock %}

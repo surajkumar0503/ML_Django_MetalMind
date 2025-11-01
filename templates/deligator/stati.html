@@ -1,0 +1,27 @@
+{% extends 'deligator/deligator_base.html' %}
+{% load static %}
+{% block content %}
+{% for m in messages %}
+	<script>
+		alert('{{ m }}')
+	</script>
+{% endfor %}
+<div class="container">
+	<h2>Extracted Residue Details</h2>
+	<br>
+	<table class="table table-bordered table-hover">
+	   <thead class="bg-dark text-white" style="background:black; color:white;">
+	   	  <tr>
+			 <th>Final Statistics</th>
+
+		  </tr>
+	   </thead>
+	   <tbody class="bg-info">
+		<tr>
+			<td><a href="/stati/"><input type="button" style="background:black; color:white; width: 120px; height: 30px;" value="SHOW"></a></td>
+          </tr>
+	   </tbody>
+	</table>
+
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'deligator/deligator_base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+	<h2>Material Details</h2>
+	<br>
+	{% if d %}
+	<table class="table table-bordered table-hover">
+	   <thead class="bg-dark text-white" style="background:black; color:white;">
+	   	  <tr>
+			 <th>Bauxite</th>
+			 <th>Aluminium oxide</th>
+			 <th>Carbon</th>
+			 <th>Aluminium fluoride</th>
+			 <th>Cryolite</th>
+			 <th>Electrical Energy</th>
+			 <th>To Process</th>
+		  </tr>
+	   </thead>
+	   <tbody class="bg-info">
+		{% for i in d %}
+		  <tr>
+			 <td>{{ i.bauxite }}</td>
+			 <td>{{ i.aluminiumoxide }}</td>
+			 <td>{{ i.carbon }}</td>
+			 <td>{{ i.aluminiumfluoride }}</td>
+			 <td>{{ i.cryolite }}</td>
+			 <td>{{ i.electricalenergy }}</td>
+			 <td><a href="/materials_sent/{{ i.id }}/"><input type="button" style="background:black; color:white; width: 75px; height: 30px;" value="Send"></a></td>
+		  </tr>
+	   {% endfor %}
+	   </tbody>
+	</table>
+	{% else %}
+	<h3>No More Details</h3>
+	{% endif %}
+</div>
+{% endblock %}
+

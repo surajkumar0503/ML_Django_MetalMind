@@ -1,0 +1,113 @@
+{% extends 'agent/agent_base.html' %}
+{% block content %}
+{% for m in messages %}
+	<script>
+	    setTimeout(()=> {
+         alert('{{ m }}');
+        }
+        ,7000);
+	</script>
+{% endfor %}
+<style>
+.progress{
+    background-color:#fff;
+    height:15px;
+    overflow: visible !important;
+    position: relative;
+    margin-bottom: 30px;
+    position: relative;
+    border-radius:20px !important;
+    box-shadow: none;
+    border:1px solid black;
+}
+.progress .progress-bar{
+    animation: animate-positive 7s;
+    position: relative;
+    box-shadow: none;
+    border-radius:20px !important;
+}
+.progress .progress-bar:after{
+    content:"";
+    position: absolute;
+    top: -12px;
+    right: 0px;
+    background-color: #FF918E;
+    height:35px;
+    width: 35px;
+    border-radius: 50%;
+    border:1px solid black;
+}
+.progress.green .progress-bar:after{
+    background-color:#A8FEBB;
+}
+.progress.blue .progress-bar:after{
+    background-color: #9CF9FB;
+}
+.progress.yellow .progress-bar:after{
+    background-color:#EFDC7C;
+}
+
+.progress .progress-bar:before{
+    content:"";
+    position: absolute;
+    top: -24px;
+    right: 0px;
+    background-color:#F51008;
+    height:15px;
+    width: 15px;
+    border-radius: 50%;
+    border:1px solid black;
+}
+
+.progress.green .progress-bar:before{
+    background-color:#13D73E;
+}
+.progress.blue .progress-bar:before{
+    background-color:  #679EF7;
+}
+.progress.yellow .progress-bar:before{
+    background-color:#F0C808;
+}
+.progress .progress-value{
+    position: absolute;
+    padding: 3px 7px;
+    top:-50px;
+    right:-20px;
+    font-size:14px;
+    color:#ffffff;
+    background-color: #000000;
+    display: block;
+}
+.progress .progress-value:after{
+    content: "";
+    position: absolute;
+    bottom:-6px;
+    left: 35%;
+    border-top: 7px solid #000000;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+}
+
+@-webkit-keyframes animate-positive {
+    0% { width: 0%; }
+}
+
+@keyframes animate-positive {
+    0% { width: 0%; }
+}
+
+</style>
+<!--        <h1>Progress Bar</h1>-->
+
+<div class="container">
+    <div class="row">
+        <h1>Process Started</h1><br><br>
+        <div class="col-md-offset-3 col-md-6">
+            <div class="progress blue">
+                <div class="progress-bar" style="width:100%;  background-color:#0D47A1;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'scrap/scrap_base.html' %}
+{% block content %}
+{% for m in messages %}
+	<script>
+		alert('{{ m }}')
+	</script>
+{% endfor %}
+<div class="container">
+	<h1 style="color: white;">Welcome to RL_scrap</h1>
+</div>
+{% endblock %}

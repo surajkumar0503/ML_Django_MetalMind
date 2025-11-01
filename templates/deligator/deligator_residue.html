@@ -1,0 +1,36 @@
+{% extends 'deligator/deligator_base.html' %}
+{% load static %}
+{% block content %}
+{% for m in messages %}
+	<script>
+		alert('{{ m }}')
+	</script>
+{% endfor %}
+<div class="container">
+	<h2>Extracted Residue Details</h2>
+	<br>
+	{% if d %}
+	<table class="table table-bordered table-hover">
+	   <thead class="bg-dark text-white" style="background:black; color:white;">
+	   	  <tr>
+			 <th>Bauxite Used (Kg)</th>
+			 <th>Aluminium Extracted (Kg)</th>
+			 <th>Red Mud (Kg)</th>
+
+		  </tr>
+	   </thead>
+	   <tbody class="bg-info">
+		{% for i in d %}
+		  <tr>
+			 <td>{{ i.bauxite }}</td>
+			 <td>{{ i.aluminium }}</td>
+			 <td>{{ i.red_mud }}</td>
+          </tr>
+	   {% endfor %}
+	   </tbody>
+	</table>
+	{% else %}
+	<h3>No More Details to View</h3>
+	{% endif %}
+</div>
+{% endblock %}
