@@ -2,8 +2,12 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db import IntegrityError
 from .models import materials
+from django.shortcuts import render
 import pandas as pd
 import matplotlib.pyplot as plt, seaborn as sns
+
+import io, base64, matplotlib
+matplotlib.use("Agg")
 
 
 # Create your views here.
@@ -80,7 +84,12 @@ def statistics(request):
 
 
 def stati(request):
-    data = pd.read_csv('aluminium dataset.csv')
-    data.groupby('bauxite (kg)')['aluminium (kg)'].aggregate(['mean', 'median']).plot.bar()
-    plt.show()
-    return redirect('/statistics/')
+    df = pd.read_csv("aluminium dataset.csv", engine="python", on_bad_lines="skip")
+    grp = df.groupby("bauxite (kg)")["aluminium (kg)"].agg(["mean", "median"])
+    ax = grp.plot.bar(figsize=(6,4))
+    fig = ax.get_figure()
+    buf = io.BytesIO()
+    fig.savefig(buf, format="png", bbox_inches="tight")
+    plt.close(fig)
+    graph = base64.b64encode(buf.getvalue()).decode("utf-8")
+    return render(request, "deligator/stati.html", {"graph": graph})
