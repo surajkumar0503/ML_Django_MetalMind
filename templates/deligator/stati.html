@@ -1,27 +1,42 @@
 {% extends 'deligator/deligator_base.html' %}
 {% load static %}
+
 {% block content %}
-{% for m in messages %}
-	<script>
-		alert('{{ m }}')
-	</script>
-{% endfor %}
-<div class="container">
-	<h2>Extracted Residue Details</h2>
-	<br>
-	<table class="table table-bordered table-hover">
-	   <thead class="bg-dark text-white" style="background:black; color:white;">
-	   	  <tr>
-			 <th>Final Statistics</th>
+  {% if messages %}
+  <div class="container mt-3">
+    {% for m in messages %}
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        {{ m }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
 
-		  </tr>
-	   </thead>
-	   <tbody class="bg-info">
-		<tr>
-			<td><a href="/stati/"><input type="button" style="background:black; color:white; width: 120px; height: 30px;" value="SHOW"></a></td>
-          </tr>
-	   </tbody>
-	</table>
+  <div class="container">
+    <h3 class="mt-4">Dataset Statistics</h3>
+    {% if graph %}
+      <img src="data:image/png;base64,{{ graph }}" alt="chart" class="img-fluid mb-4"/>
+    {% else %}
+      <p>No plot available.</p>
+    {% endif %}
 
-</div>
+    <h4>Extracted Residue Details</h4>
+    <table class="table table-bordered table-hover mt-3">
+      <thead class="bg-dark text-white">
+        <tr>
+          <th>Final Statistics</th>
+        </tr>
+      </thead>
+      <tbody class="bg-info">
+        <tr>
+          <td>
+            <a href="{% url 'stati' %}">
+              <button type="button" class="btn btn-dark btn-sm">Show</button>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 {% endblock %}
