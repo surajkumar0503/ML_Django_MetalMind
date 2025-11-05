@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'main_aluminium.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+# For quick local development
 
 # DATABASES = {
 #     'default': {
@@ -86,12 +86,17 @@ WSGI_APPLICATION = 'main_aluminium.wsgi.application'
 #     }
 # }
 
+
+
+# For production
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'aluminium',
-        'USER': 'root',
-        'PASSWORD': '',
+        'NAME': 'aluminium_db',
+        'USER': 'aluminium_user',
+        'PASSWORD': 'stpass123',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
     }
 }
 
