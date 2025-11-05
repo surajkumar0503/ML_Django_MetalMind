@@ -1,0 +1,44 @@
+# === PYTHON / DJANGO STANDARD ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+
+# Virtual environments
+venv/
+virtual/
+.env/
+.venv/
+
+# Databases
+db.sqlite3
+db.sqlite3-journal
+
+# Media / user uploads
+media/
+tmp/
+
+# Static build output
+staticfiles/
+static_root/
+assets/
+
+# Machine learning files
+*.csv
+*.xlsx
+*.xls
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+models/
+datasets/
+checkpoints/
+logs/
+runs/
+
+# IDE / system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
