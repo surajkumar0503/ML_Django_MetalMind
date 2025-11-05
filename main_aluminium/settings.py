@@ -92,8 +92,8 @@ WSGI_APPLICATION = 'main_aluminium.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'aluminium_db',
-        'USER': 'aluminium_user',
+        'NAME': 'aluminium_first_db',
+        'USER': 'aluminium_new_user',
         'PASSWORD': 'stpass123',
         'HOST': '127.0.0.1',
         'PORT': '3306'
